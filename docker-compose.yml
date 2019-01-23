@@ -172,7 +172,9 @@ services:
       depends_on:
         - workspace
       networks:
-        - backend
+        backend:
+          aliases:
+            - app
       links:
         - docker-in-docker
 
