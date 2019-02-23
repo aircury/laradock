@@ -128,7 +128,7 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
   if [ $(php -r "echo PHP_MAJOR_VERSION;") = "5" ]; then \
     pecl install xdebug-2.5.5; \
   else \
-    pecl install xdebug; \
+    [ $(php -r "echo PHP_MAJOR_VERSION . PHP_MINOR_VERSION;") = "73" ] && pecl install xdebug-beta || pecl install xdebug; \
   fi && \
   docker-php-ext-enable xdebug \
 ;fi
